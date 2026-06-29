@@ -28,6 +28,14 @@ module.exports = grammar(CSS, {
 
     _js_block: $ => seq("{", repeat($._js_statement), "}"),
 
-    _js_statement: $ => /[^{}]+/,
+    _js_statement: $ =>
+      token(
+        repeat1(
+          choice(
+            /[^{}`]+/,
+            seq("`", repeat(choice(/[^`\\]/, /\\./)), "`")
+          )
+        )
+      ),
   },
 })
