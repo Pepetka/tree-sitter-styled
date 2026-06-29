@@ -54,6 +54,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "keyframe_block"
+        },
+        {
+          "type": "SYMBOL",
           "name": "interpolation"
         }
       ]

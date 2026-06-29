@@ -3,7 +3,7 @@ const CSS = require("tree-sitter-css/grammar")
 module.exports = grammar(CSS, {
   name: "styled",
   rules: {
-    _top_level_item: ($, original) => choice(original, $.interpolation),
+    _top_level_item: ($, original) => choice(original, $.keyframe_block, $.interpolation),
 
     _block_item: ($, original) => choice(original, $.interpolation),
 

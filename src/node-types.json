@@ -1972,6 +1972,10 @@
           "named": true
         },
         {
+          "type": "keyframe_block",
+          "named": true
+        },
+        {
           "type": "keyframes_statement",
           "named": true
         },
