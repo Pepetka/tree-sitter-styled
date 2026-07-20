@@ -202,3 +202,68 @@ p {
         (plain_value))
       (interpolation
         (js_expression)))))
+
+=========================
+Nested template with nested rule sets
+=========================
+
+${css`
+  p {
+    &:hover {
+      color: blue;
+    }
+  }
+`}
+
+---
+
+(stylesheet
+  (interpolation
+    (js_expression)))
+
+=========================
+Interpolation with nested JS blocks
+=========================
+
+color: ${props => {
+  if (props.primary) {
+    return 'red';
+  }
+}};
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression))))
+
+=========================
+Top level keyframe blocks
+=========================
+
+0% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
+
+---
+
+(stylesheet
+  (keyframe_block
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (keyframe_block
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value)))))
