@@ -26,7 +26,7 @@ module.exports = grammar(CSS, {
 
     _js_expression: $ => choice($._js_block, $._js_statement),
 
-    _js_block: $ => seq("{", repeat($._js_statement), "}"),
+    _js_block: $ => seq("{", repeat($._js_expression), "}"),
 
     _js_statement: $ =>
       token(
