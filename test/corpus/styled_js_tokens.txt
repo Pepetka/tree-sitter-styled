@@ -1,0 +1,517 @@
+================================================================================
+Closing brace in a single quoted JS string
+================================================================================
+
+color: red;
+content: ${'}'};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Opening brace in a double quoted JS string
+================================================================================
+
+color: red;
+content: ${"{"};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Backtick in a single quoted JS string
+================================================================================
+
+color: red;
+content: ${'`'};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Backtick in a double quoted JS string
+================================================================================
+
+color: red;
+content: ${"`"};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Escaped quote before a closing brace in a JS string
+================================================================================
+
+color: red;
+content: ${'it\'s }'};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Escaped double quote before an opening brace in a JS string
+================================================================================
+
+color: red;
+content: ${"a\"{b"};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Comment delimiters inside a quoted JS string
+================================================================================
+
+color: red;
+content: ${'/* } */'};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Braces inside a JS string in a nested JS block
+================================================================================
+
+color: red;
+content: ${() => { return { content: '}' }; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Closing brace in a JS block comment
+================================================================================
+
+color: red;
+content: ${value /* } */};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Opening brace in a JS block comment
+================================================================================
+
+color: red;
+content: ${value /* { */};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Backtick in a JS block comment
+================================================================================
+
+color: red;
+content: ${value /* ` */};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Closing brace in a JS line comment
+================================================================================
+
+color: red;
+content: ${value // }
+};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Backtick in a JS line comment
+================================================================================
+
+color: red;
+content: ${value // `
+};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Block comment inside a nested JS block
+================================================================================
+
+color: red;
+content: ${() => { if (active) { /* } */ return color; } }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Closing brace in a regular expression character class
+================================================================================
+
+color: red;
+content: ${/[}]/.test(value)};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Opening brace in a regular expression character class
+================================================================================
+
+color: red;
+content: ${/[{]/.test(value)};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Backtick in a regular expression
+================================================================================
+
+color: red;
+content: ${/`/.test(value)};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Escaped slash and closing brace in a regular expression
+================================================================================
+
+color: red;
+content: ${/\/[}]/g.test(value)};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Braced quantifier in a regular expression
+================================================================================
+
+color: red;
+content: ${/a{1,3}/.test(value)};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Division remains a JS expression
+================================================================================
+
+color: red;
+content: ${props.width / 2};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Division and regular expression in the same expression
+================================================================================
+
+color: red;
+content: ${props.width / (/[}]/.test(value) ? 2 : 1)};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Quoted backticks in separate declarations preserve both interpolations
+================================================================================
+
+color: red;
+content: ${'`'};
+background: ${'`'};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Quoted backtick before a template literal preserves following declarations
+================================================================================
+
+color: red;
+content: ${'`'};
+background: ${`blue`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))

@@ -1,0 +1,863 @@
+================================================================================
+Percentage keyframes preserve following CSS
+================================================================================
+
+0% { opacity: 0; }
+100% { opacity: 1; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (keyframe_block
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+From and to keyframes preserve following CSS
+================================================================================
+
+from { opacity: 0; }
+to { opacity: 1; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (from)
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (keyframe_block
+    (to)
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Fractional percentage keyframe
+================================================================================
+
+12.5% { opacity: 0; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (float_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Leading decimal point in a percentage keyframe
+================================================================================
+
+.5% { opacity: 0; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (float_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Comma separated percentage keyframes
+================================================================================
+
+0%, 50%, 100% { opacity: 0; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (integer_value
+      (unit))
+    (integer_value
+      (unit))
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Comma separated keyword and percentage keyframes
+================================================================================
+
+from, 50%, to { opacity: 0; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (from)
+    (integer_value
+      (unit))
+    (to)
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Empty percentage keyframe block
+================================================================================
+
+0% {}
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (integer_value
+      (unit))
+    (block))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Repeated percentage keyframe blocks
+================================================================================
+
+0% { opacity: 0; }
+0% { opacity: 1; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (keyframe_block
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Inline interpolation inside a keyframe
+================================================================================
+
+0% { opacity: ${props => props.opacity}; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (interpolation
+          (js_expression)))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Nested JS blocks inside a keyframe declaration
+================================================================================
+
+0% { opacity: ${props => { if (props.active) { return 1; } return 0; }}; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (interpolation
+          (js_expression)))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Mixin interpolation inside a keyframe block
+================================================================================
+
+0% { ${mixin}; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (integer_value
+      (unit))
+    (block
+      (interpolation
+        (js_expression))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Mixin interpolation between keyframe blocks
+================================================================================
+
+0% { opacity: 0; }
+${extraFrames}
+100% { opacity: 1; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (interpolation
+    (js_expression))
+  (keyframe_block
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Comments between keyframe blocks
+================================================================================
+
+0% { opacity: 0; }
+/* pause */
+100% { opacity: 1; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (comment)
+  (keyframe_block
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Standard keyframes retain their wrapper
+================================================================================
+
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframes_statement
+    (keyframes_name)
+    (keyframe_block_list
+      (keyframe_block
+        (from)
+        (block
+          (declaration
+            (property_name)
+            (integer_value))))
+      (keyframe_block
+        (to)
+        (block
+          (declaration
+            (property_name)
+            (integer_value))))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Fractional percentages inside standard keyframes
+================================================================================
+
+@keyframes fade { 12.5% { opacity: 0; } }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframes_statement
+    (keyframes_name)
+    (keyframe_block_list
+      (keyframe_block
+        (float_value
+          (unit))
+        (block
+          (declaration
+            (property_name)
+            (integer_value))))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Comma separated offsets inside standard keyframes
+================================================================================
+
+@keyframes fade { 0%, 100% { opacity: 0; } }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframes_statement
+    (keyframes_name)
+    (keyframe_block_list
+      (keyframe_block
+        (integer_value
+          (unit))
+        (integer_value
+          (unit))
+        (block
+          (declaration
+            (property_name)
+            (integer_value))))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Vendor prefixed keyframes retain their wrapper
+================================================================================
+
+@-webkit-keyframes fade { 0% { opacity: 0; } }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframes_statement
+    (at_keyword)
+    (keyframes_name)
+    (keyframe_block_list
+      (keyframe_block
+        (integer_value
+          (unit))
+        (block
+          (declaration
+            (property_name)
+            (integer_value))))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Mixed integer and fractional percentage offsets
+================================================================================
+
+0%, 12.5%, .5%, 100% { opacity: 0; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (integer_value
+      (unit))
+    (float_value
+      (unit))
+    (float_value
+      (unit))
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Keyword prefix before a percentage in a keyframe list
+================================================================================
+
+from, to, 50% { opacity: 0; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (from)
+    (to)
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Fractional offset before keyword offsets in a keyframe list
+================================================================================
+
+12.5%, to, from { opacity: 0; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (float_value
+      (unit))
+    (to)
+    (from)
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Leading decimal offset between keyword offsets
+================================================================================
+
+from, .5%, to { opacity: 0; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (from)
+    (float_value
+      (unit))
+    (to)
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Comments between keyframe offsets
+================================================================================
+
+from, /* middle */ 12.5%, /* end */ to { opacity: 0; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (from)
+    (comment)
+    (float_value
+      (unit))
+    (comment)
+    (to)
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Multiline keyframe offset list
+================================================================================
+
+0%,
+  50.5%,
+  100% { opacity: 0; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (integer_value
+      (unit))
+    (float_value
+      (unit))
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Repeated offsets in a single keyframe list
+================================================================================
+
+0%, 0%, 100% { opacity: 0; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (integer_value
+      (unit))
+    (integer_value
+      (unit))
+    (integer_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Explicit positive fractional percentage offset
+================================================================================
+
++12.5% { opacity: 0; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (float_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Scientific notation percentage offset
+================================================================================
+
+1e1% { opacity: 0; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (float_value
+      (unit))
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Keyword-only lists inside standard keyframes remain keyframes
+================================================================================
+
+@keyframes fade { from, to { opacity: 0; } }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframes_statement
+    (keyframes_name)
+    (keyframe_block_list
+      (keyframe_block
+        (from)
+        (to)
+        (block
+          (declaration
+            (property_name)
+            (integer_value))))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Fractional offset lists inside standard keyframes
+================================================================================
+
+@keyframes fade { .5%, 12.5%, 100% { opacity: 0; } }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframes_statement
+    (keyframes_name)
+    (keyframe_block_list
+      (keyframe_block
+        (float_value
+          (unit))
+        (float_value
+          (unit))
+        (integer_value
+          (unit))
+        (block
+          (declaration
+            (property_name)
+            (integer_value))))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Mixed offset lists inside vendor-prefixed keyframes
+================================================================================
+
+@-webkit-keyframes fade { from, .5%, to { opacity: 0; } }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframes_statement
+    (at_keyword)
+    (keyframes_name)
+    (keyframe_block_list
+      (keyframe_block
+        (from)
+        (float_value
+          (unit))
+        (to)
+        (block
+          (declaration
+            (property_name)
+            (integer_value))))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+JS blocks inside a mixed keyframe list preserve following CSS
+================================================================================
+
+from, 12.5%, to { opacity: ${props => { if (props.active) { return 1; } return 0; }}; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (from)
+    (float_value
+      (unit))
+    (to)
+    (block
+      (declaration
+        (property_name)
+        (interpolation
+          (js_expression)))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Nested standard keyframes and keyword selector lists stay distinct
+================================================================================
+
+p { @keyframes fade { from, to { opacity: 0; } } from, to { color: red; } }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (tag_name))
+    (block
+      (keyframes_statement
+        (keyframes_name)
+        (keyframe_block_list
+          (keyframe_block
+            (from)
+            (to)
+            (block
+              (declaration
+                (property_name)
+                (integer_value))))))
+      (rule_set
+        (selectors
+          (tag_name)
+          (tag_name))
+        (block
+          (declaration
+            (property_name)
+            (plain_value))))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Keyword lists use their surrounding selector or keyframe context
+================================================================================
+
+from, to { color: red; }
+@keyframes fade { from, to { opacity: 0; } }
+from, 12.5%, to { opacity: 1; }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (tag_name)
+      (tag_name))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (keyframes_statement
+    (keyframes_name)
+    (keyframe_block_list
+      (keyframe_block
+        (from)
+        (to)
+        (block
+          (declaration
+            (property_name)
+            (integer_value))))))
+  (keyframe_block
+    (from)
+    (float_value
+      (unit))
+    (to)
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Percentage exponents accept explicit signs
+================================================================================
+
+1e+1%, 1.25e-1% { opacity: 0; }
+outline: none;
+
+---
+
+(stylesheet (keyframe_block (float_value (unit)) (float_value (unit)) (block (declaration (property_name) (integer_value)))) (declaration (property_name) (plain_value)))
+
+================================================================================
+Keyframe keywords are case insensitive
+================================================================================
+
+@keyframes fade { FROM, To { opacity: 0; } }
+outline: none;
+
+---
+
+(stylesheet (keyframes_statement (keyframes_name) (keyframe_block_list (keyframe_block (from) (to) (block (declaration (property_name) (integer_value)))))) (declaration (property_name) (plain_value)))
+
+================================================================================
+A fractional keyframe offset needs a percent sign
+================================================================================
+
+@keyframes fade { 12.5 { opacity: 0; } }
+outline: none;
+
+---
+
+(stylesheet (keyframes_statement (keyframes_name) (keyframe_block_list (keyframe_block (float_value (MISSING unit)) (block (declaration (property_name) (integer_value)))))) (declaration (property_name) (plain_value)))
+
+================================================================================
+Length units do not form a bare keyframe
+================================================================================
+
+12.5px {}
+
+---
+
+(stylesheet (ERROR) (rule_set (selectors (tag_name)) (block)))

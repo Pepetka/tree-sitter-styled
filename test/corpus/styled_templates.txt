@@ -1,0 +1,619 @@
+================================================================================
+Nested template example from development notes
+================================================================================
+
+color: red;
+${css`
+  color: red;
+  ${active && css`background: blue;`}
+`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Empty JS template literal
+================================================================================
+
+color: red;
+${``};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Multiline JS template literal
+================================================================================
+
+color: red;
+${`first
+second`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Unicode text in a JS template literal
+================================================================================
+
+color: red;
+${`цвет🙂`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Nested CSS rules in a tagged template literal
+================================================================================
+
+color: red;
+${css`p { &:hover { color: blue; } }`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Unmatched closing CSS brace inside a template literal
+================================================================================
+
+color: red;
+${css`content: "}";`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Unmatched opening CSS brace inside a template literal
+================================================================================
+
+color: red;
+${css`content: "{";`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Escaped backtick inside a JS template literal
+================================================================================
+
+color: red;
+${`a\`b`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Escaped backslash inside a JS template literal
+================================================================================
+
+color: red;
+${`a\\b`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Even backslashes before a closing template delimiter
+================================================================================
+
+color: red;
+${`a\\`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Odd backslashes before an escaped template delimiter
+================================================================================
+
+color: red;
+${`a\\\`b`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Escaped interpolation marker inside a JS template literal
+================================================================================
+
+color: red;
+${css`content: "\${value}";`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Escape sequence inside a JS template literal
+================================================================================
+
+color: red;
+${`line\nbreak`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Escaped physical newline inside a JS template literal
+================================================================================
+
+color: red;
+${`first\
+second`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Consecutive JS template literals in one expression
+================================================================================
+
+color: red;
+${`first` + `second`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+JS object after a template literal
+================================================================================
+
+color: red;
+${css`color: red;` || { color: 'blue' }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Tagged template literal inside a nested JS block
+================================================================================
+
+color: red;
+${props => { if (props.active) { return css`content: "}";`; } return css`color: blue;`; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Two nested template literals with CSS rules
+================================================================================
+
+color: red;
+${css`color: red; ${active && css`&:hover { color: blue; }`}`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Closing CSS brace in a twice nested template literal
+================================================================================
+
+color: red;
+${css`${css`content: "}";`}`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Opening CSS brace in a twice nested template literal
+================================================================================
+
+color: red;
+${css`${css`content: "{";`}`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Three nested template literals
+================================================================================
+
+color: red;
+${css`${css`${css`content: "}";`}`}`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Four nested template literals
+================================================================================
+
+color: red;
+${css`${css`${css`${css`content: "}";`}`}`}`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Quoted backtick inside a template substitution
+================================================================================
+
+color: red;
+${css`content: ${"`"};`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Unmatched closing brace in an inline template literal
+================================================================================
+
+color: red;
+content: ${`}`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Template mixin inside a CSS block preserves the block boundary
+================================================================================
+
+p { color: red; ${css`content: "}";`}; outline: none; }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (tag_name))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))
+      (interpolation
+        (js_expression))
+      (declaration
+        (property_name)
+        (plain_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Adjacent top level template interpolations preserve both nodes
+================================================================================
+
+color: red;
+${css`color: blue;`}${css`background: red;`}
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Adjacent inline interpolations preserve both value nodes
+================================================================================
+
+color: red;
+content: ${first}${second};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression))
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Interpolations separated by a CSS value preserve that value
+================================================================================
+
+color: red;
+border: ${width} solid ${color};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression))
+    (plain_value)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Template literal as a CSS function argument preserves following CSS
+================================================================================
+
+color: red;
+transform: translateX(${`10px`});
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (call_expression
+      (function_name)
+      (arguments
+        (interpolation
+          (js_expression)))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Unterminated tagged template reports an error after a complete declaration
+================================================================================
+
+color: red;
+${css`
+
+---
+
+(stylesheet (declaration (property_name) (plain_value)) (ERROR (identifier) (UNEXPECTED '`')))

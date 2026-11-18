@@ -1,0 +1,502 @@
+================================================================================
+From remains a valid type selector with an ID
+================================================================================
+
+from#target { color: red; }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (id_selector
+        (tag_name)
+        (id_name)))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+To remains a valid type selector with an attribute
+================================================================================
+
+to[data-id] { color: red; }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (attribute_selector
+        (tag_name)
+        (attribute_name)))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+To remains valid in a child selector
+================================================================================
+
+to > span { color: red; }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (child_selector
+        (tag_name)
+        (tag_name)))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+From and to remain valid in a descendant selector
+================================================================================
+
+from to { color: red; }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (descendant_selector
+        (tag_name)
+        (tag_name)))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+From remains valid in a pseudo element selector
+================================================================================
+
+from::before { color: red; }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (pseudo_element_selector
+        (tag_name)
+        (tag_name)))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Identifier starting with from remains a type selector
+================================================================================
+
+from-component { color: red; }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (tag_name))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Identifier starting with to remains a type selector
+================================================================================
+
+to-component { color: red; }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (tag_name))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+From and to remain valid in a selector list
+================================================================================
+
+from, to { color: red; }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (tag_name)
+      (tag_name))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+From and to remain valid inside a CSS block
+================================================================================
+
+p { from:hover { color: red; } to > span { color: blue; } }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (tag_name))
+    (block
+      (rule_set
+        (selectors
+          (pseudo_class_selector
+            (tag_name)
+            (class_name
+              (identifier))))
+        (block
+          (declaration
+            (property_name)
+            (plain_value))))
+      (rule_set
+        (selectors
+          (child_selector
+            (tag_name)
+            (tag_name)))
+        (block
+          (declaration
+            (property_name)
+            (plain_value))))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Keyframe keywords support adjacent sibling selectors
+================================================================================
+
+from + to { color: red; }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (adjacent_sibling_selector
+        (tag_name)
+        (tag_name)))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Keyframe keywords support general sibling selectors
+================================================================================
+
+to ~ from { color: red; }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (sibling_selector
+        (tag_name)
+        (tag_name)))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Keyframe keywords support namespace selectors
+================================================================================
+
+from|to { color: red; }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (namespace_selector
+        (tag_name)
+        (tag_name)))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Keyframe keywords remain valid in selector function arguments
+================================================================================
+
+:is(from, to) { color: red; }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (pseudo_class_selector
+        (class_name)
+        (arguments
+          (tag_name)
+          (tag_name))))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Comments preserve keyframe keyword selector context
+================================================================================
+
+from /* selector */ > to { color: red; }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (child_selector
+        (tag_name)
+        (comment)
+        (tag_name)))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Bare keyword selectors inside a CSS block retain their selector nodes
+================================================================================
+
+p { from { color: red; } to { color: blue; } }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (tag_name))
+    (block
+      (rule_set
+        (selectors
+          (tag_name))
+        (block
+          (declaration
+            (property_name)
+            (plain_value))))
+      (rule_set
+        (selectors
+          (tag_name))
+        (block
+          (declaration
+            (property_name)
+            (plain_value))))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Bare keyframes and modified keyword selectors keep distinct node types
+================================================================================
+
+from { opacity: 0; }
+from:hover { color: red; }
+to { opacity: 1; }
+to.active { color: blue; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (from)
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (rule_set
+    (selectors
+      (pseudo_class_selector
+        (tag_name)
+        (class_name
+          (identifier))))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (keyframe_block
+    (to)
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (rule_set
+    (selectors
+      (class_selector
+        (tag_name)
+        (class_name
+          (identifier))))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Standard keyframes do not reserve keywords in following selectors
+================================================================================
+
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+from:hover { color: red; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframes_statement
+    (keyframes_name)
+    (keyframe_block_list
+      (keyframe_block
+        (from)
+        (block
+          (declaration
+            (property_name)
+            (integer_value))))
+      (keyframe_block
+        (to)
+        (block
+          (declaration
+            (property_name)
+            (integer_value))))))
+  (rule_set
+    (selectors
+      (pseudo_class_selector
+        (tag_name)
+        (class_name
+          (identifier))))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+A keyword selector list between bare keyframes remains a CSS rule
+================================================================================
+
+from { opacity: 0; }
+from, to { color: red; }
+to { opacity: 1; }
+outline: none;
+
+---
+
+(stylesheet
+  (keyframe_block
+    (from)
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (rule_set
+    (selectors
+      (tag_name)
+      (tag_name))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))))
+  (keyframe_block
+    (to)
+    (block
+      (declaration
+        (property_name)
+        (integer_value))))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Keyframe keywords can still be CSS property names
+================================================================================
+
+from: red;
+to { from: blue; to: red }
+outline: none;
+
+---
+
+(stylesheet (declaration (property_name) (plain_value)) (keyframe_block (to) (block (declaration (property_name) (plain_value)) (declaration (property_name) (plain_value)))) (declaration (property_name) (plain_value)))

@@ -1228,6 +1228,10 @@
           "named": true
         },
         {
+          "type": "float_value",
+          "named": true
+        },
+        {
           "type": "from",
           "named": true
         },

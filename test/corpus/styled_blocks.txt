@@ -1,0 +1,252 @@
+================================================================================
+Empty arrow function block
+================================================================================
+
+color: red;
+content: ${() => {}};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Nested object destructuring
+================================================================================
+
+color: red;
+content: ${({ theme: { colors } }) => colors.primary};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Nested object returned from an arrow function
+================================================================================
+
+color: red;
+content: ${() => ({ theme: { color: 'red' } })};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Object inside an array inside a JS block
+================================================================================
+
+color: red;
+content: ${() => { return [{ theme: { color: 'red' } }]; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Three levels of conditional JS blocks
+================================================================================
+
+color: red;
+content: ${props => { if (props.active) { if (props.primary) { return 'red'; } } return 'blue'; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Try catch and finally blocks
+================================================================================
+
+color: red;
+content: ${() => { try { return readColor(); } catch (error) { return 'red'; } finally { cleanup(); } }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Object method with a nested block
+================================================================================
+
+color: red;
+content: ${({ getColor() { if (active) { return 'red'; } return 'blue'; } }).getColor()};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Sequential JS blocks in one interpolation
+================================================================================
+
+color: red;
+content: ${() => { if (first) { update(); } if (second) { reset(); } return color; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Top level interpolation without a semicolon preserves following CSS
+================================================================================
+
+color: red;
+${props => { if (props.active) { return mixin; } }}
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (interpolation
+    (js_expression))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Nested JS blocks inside a CSS rule preserve following declarations
+================================================================================
+
+p { color: red; content: ${props => { if (props.active) { return 'red'; } }}; outline: none; }
+body { color: blue; }
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (tag_name))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))
+      (declaration
+        (property_name)
+        (interpolation
+          (js_expression)))
+      (declaration
+        (property_name)
+        (plain_value))))
+  (rule_set
+    (selectors
+      (tag_name))
+    (block
+      (declaration
+        (property_name)
+        (plain_value)))))
+
+================================================================================
+Last declaration may end with an interpolation without a semicolon
+================================================================================
+
+p { color: red; content: ${props => { return props.color; }} }
+outline: none;
+
+---
+
+(stylesheet
+  (rule_set
+    (selectors
+      (tag_name))
+    (block
+      (declaration
+        (property_name)
+        (plain_value))
+      (declaration
+        (property_name)
+        (interpolation
+          (js_expression)))))
+  (declaration
+    (property_name)
+    (plain_value)))

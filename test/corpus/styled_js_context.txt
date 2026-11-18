@@ -1,0 +1,947 @@
+================================================================================
+Regex after return in a JS block
+================================================================================
+
+color: red;
+content: ${() => { return /[}]/.test(value); }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Regex after throw in a JS block
+================================================================================
+
+color: red;
+content: ${() => { throw /[}]/; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Regex after a unary operator
+================================================================================
+
+color: red;
+content: ${typeof /[}]/};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Regex as an arrow function body
+================================================================================
+
+color: red;
+content: ${() => /[}]/.test(value)};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Regex after a nested if condition
+================================================================================
+
+color: red;
+content: ${() => { if ((active)) /[}]/.test(value); return color; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Regex after a while condition
+================================================================================
+
+color: red;
+content: ${() => { while (active) /[}]/.test(value); return color; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Regex after a statement block
+================================================================================
+
+color: red;
+content: ${() => { if (active) {} /[}]/.test(value); return color; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Regex after a function declaration
+================================================================================
+
+color: red;
+content: ${() => { function check() {} /[}]/.test(value); return color; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Regex after a class declaration
+================================================================================
+
+color: red;
+content: ${() => { class Check {} /[}]/.test(value); return color; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Division after a function expression
+================================================================================
+
+color: red;
+content: ${function() {} / 2};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Division after a class expression
+================================================================================
+
+color: red;
+content: ${class {} / 2};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Division after a function call
+================================================================================
+
+color: red;
+content: ${readColor() / 2};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Division after a keyword property name
+================================================================================
+
+color: red;
+content: ${props.return / 2};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Division after a keyword method name
+================================================================================
+
+color: red;
+content: ${props.if(active) / 2};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Division after an optional keyword property
+================================================================================
+
+color: red;
+content: ${props?.return / 2};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Division after a postfix increment
+================================================================================
+
+color: red;
+content: ${value++ / 2};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Division after a prefix increment
+================================================================================
+
+color: red;
+content: ${++value / 2};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Postfix TypeScript non-null assertion preserves division
+================================================================================
+
+color: red;
+content: ${props.width! / 2};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Logical not before a regex preserves its lexical context
+================================================================================
+
+color: red;
+content: ${!/[}]/.test(value)};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Inequality before a regex preserves its lexical context
+================================================================================
+
+color: red;
+content: ${value != /[}]/.test(other)};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Chained division operators
+================================================================================
+
+color: red;
+content: ${first / second / third};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Division after a regex method call
+================================================================================
+
+color: red;
+content: ${/[}]/.test(value) / 2};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Regex in a for of loop header
+================================================================================
+
+color: red;
+content: ${() => { for (const item of /[}]/g) {} return color; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Division after an identifier named of
+================================================================================
+
+color: red;
+content: ${of / 2};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Regex after break and a line terminator
+================================================================================
+
+color: red;
+content: ${() => { while (active) { break
+/[}]/.test(value); } return color; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Regex after a labelled break and a line terminator
+================================================================================
+
+color: red;
+content: ${() => { outer: while (active) { break outer
+/[}]/.test(value); } return color; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Regex after a labelled block
+================================================================================
+
+color: red;
+content: ${() => { label: {} /[}]/.test(value); return color; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Regex after a block following return and a line terminator
+================================================================================
+
+color: red;
+content: ${() => { return
+{} /[}]/.test(value); }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Regex after a block following a multiline return comment
+================================================================================
+
+color: red;
+content: ${() => { return /*
+*/ {} /[}]/.test(value); }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Keyword object keys preserve division in following properties
+================================================================================
+
+color: red;
+content: ${({ if: active, color: readColor() / 2 }).color};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Ternary object literals preserve division
+================================================================================
+
+color: red;
+content: ${() => { return (active ? 1 : { value: 2 }) / 2; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Decimal shorthand in a ternary preserves division
+================================================================================
+
+color: red;
+content: ${() => { return active?.5:{} / 2; }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Nullish coalescing before a regex
+================================================================================
+
+color: red;
+content: ${value ?? /[}]/.test(other)};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Regex in a template substitution
+================================================================================
+
+color: red;
+content: ${css`content: ${/[}]/.test(value)};`};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+JS string with an escaped physical newline
+================================================================================
+
+color: red;
+content: ${'first\
+second'};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Unicode whitespace between return and a regex
+================================================================================
+
+color: red;
+content: ${() => { return /[}]/.test(value); }};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Division and a following regex preserve separate interpolations
+================================================================================
+
+color: red;
+width: ${value / 2};
+content: ${/[}]/.test(value)};
+outline: none;
+
+---
+
+(stylesheet
+  (declaration
+    (property_name)
+    (plain_value))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (interpolation
+      (js_expression)))
+  (declaration
+    (property_name)
+    (plain_value)))
+
+================================================================================
+Division after contextual identifiers preserves separate declarations
+================================================================================
+
+width: ${await / 2}; height: ${yield / 3};
+outline: none;
+
+---
+
+(stylesheet (declaration (property_name) (interpolation (js_expression))) (declaration (property_name) (interpolation (js_expression))) (declaration (property_name) (plain_value)))
+
+================================================================================
+Await and yield before regexes in async functions and generators
+================================================================================
+
+width: ${(async () => await /[}]/.test(value))};
+height: ${function* () { yield /[}]/; }};
+outline: none;
+
+---
+
+(stylesheet (declaration (property_name) (interpolation (js_expression))) (declaration (property_name) (interpolation (js_expression))) (declaration (property_name) (plain_value)))
+
+================================================================================
+Division after an optional catch binding
+================================================================================
+
+width: ${() => { try {} catch {} return getWidth() / 2; }};
+outline: none;
+
+---
+
+(stylesheet (declaration (property_name) (interpolation (js_expression))) (declaration (property_name) (plain_value)))
+
+================================================================================
+Regex after an optional catch block
+================================================================================
+
+width: ${() => { try {} catch {} /[}]/.test(value); }};
+outline: none;
+
+---
+
+(stylesheet (declaration (property_name) (interpolation (js_expression))) (declaration (property_name) (plain_value)))
+
+================================================================================
+Regex after a separate block following an automatic semicolon
+================================================================================
+
+width: ${() => { let state = 0
+{} /[}]/.test(value); }};
+outline: none;
+
+---
+
+(stylesheet (declaration (property_name) (interpolation (js_expression))) (declaration (property_name) (plain_value)))
+
+================================================================================
+Division after TypeScript type arguments in an assertion
+================================================================================
+
+width: ${props.width as Pixels<Box<number>> / 2};
+outline: none;
+
+---
+
+(stylesheet (declaration (property_name) (interpolation (js_expression))) (declaration (property_name) (plain_value)))
+
+================================================================================
+Regex after a JavaScript relational operator
+================================================================================
+
+width: ${min < max > /[}]/.test(value)};
+outline: none;
+
+---
+
+(stylesheet (declaration (property_name) (interpolation (js_expression))) (declaration (property_name) (plain_value)))
+
+================================================================================
+A JSX element closing tag stays inside an interpolation
+================================================================================
+
+content: ${String(<span>text</span>)};
+outline: none;
+
+---
+
+(stylesheet (declaration (property_name) (interpolation (js_expression))) (declaration (property_name) (plain_value)))
+
+================================================================================
+Contextual await distinguishes division by an array from a regex class
+================================================================================
+
+width: ${await / [2][0]};
+height: ${await / [a}]/.test(value) || await /[{]/.test(value)};
+outline: none;
+
+---
+
+(stylesheet (declaration (property_name) (interpolation (js_expression))) (declaration (property_name) (interpolation (js_expression))) (declaration (property_name) (plain_value)))
+
+================================================================================
+An async arrow does not change the lexical context of the next expression
+================================================================================
+
+width: ${(async () => 1, await / 2)};
+outline: none;
+
+---
+
+(stylesheet (declaration (property_name) (interpolation (js_expression))) (declaration (property_name) (plain_value)))
+
+================================================================================
+Nested JSX text and children preserve the closing CSS boundary
+================================================================================
+
+content: ${String(<div><span>don't {value}</span><Icon /></div>)};
+outline: none;
+
+---
+
+(stylesheet (declaration (property_name) (interpolation (js_expression))) (declaration (property_name) (plain_value)))
